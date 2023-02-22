@@ -32,8 +32,7 @@ defmodule Ratatouille.Renderer.Element.Tree do
     node_prefix = parent_prefix <> line(root, last_child)
     child_prefix = parent_prefix <> indent(root, last_child)
 
-    node_prefix_offset =
-      Position.translate_x(box.top_left, String.length(node_prefix))
+    node_prefix_offset = Position.translate_x(box.top_left, String.length(node_prefix))
 
     canvas
     |> Text.render(box.top_left, node_prefix)

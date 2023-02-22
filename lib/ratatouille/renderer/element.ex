@@ -42,8 +42,7 @@ defmodule Ratatouille.Renderer.Element do
 
   @specs [
     bar: [
-      description:
-        "Block-level element for creating title, status or menu bars",
+      description: "Block-level element for creating title, status or menu bars",
       renderer: Bar,
       child_tags: [:label],
       attributes: []
@@ -65,10 +64,8 @@ defmodule Ratatouille.Renderer.Element do
         y: {:required, "Integer representing the cell's row (zero-indexed)"},
         color: {:optional, "Constant representing color to use for foreground"},
         char: {:optional, "Single character to render within this cell"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"}
       ]
     ],
     chart: [
@@ -76,11 +73,8 @@ defmodule Ratatouille.Renderer.Element do
       renderer: Chart,
       child_tags: [],
       attributes: [
-        series:
-          {:required, "List of float or integer values representing the series"},
-        type:
-          {:required,
-           "Type of chart to plot. Currently only `:line` is supported"},
+        series: {:required, "List of float or integer values representing the series"},
+        type: {:required, "Type of chart to plot. Currently only `:line` is supported"},
         height: {:optional, "Height of the chart in rows"}
       ]
     ],
@@ -89,9 +83,7 @@ defmodule Ratatouille.Renderer.Element do
       renderer: Column,
       child_tags: @content_tags,
       attributes: [
-        size:
-          {:required,
-           "Number of units on the grid that the column should occupy"}
+        size: {:required, "Number of units on the grid that the column should occupy"}
       ]
     ],
     label: [
@@ -99,16 +91,11 @@ defmodule Ratatouille.Renderer.Element do
       renderer: Label,
       child_tags: [:text],
       attributes: [
-        content:
-          {:optional, "Binary containing the text content to be displayed"},
+        content: {:optional, "Binary containing the text content to be displayed"},
         color: {:optional, "Constant representing color to use for foreground"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"},
-        wrap:
-          {:optional,
-           "Boolean indicating whether or not to wrap lines to fit available space"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"},
+        wrap: {:optional, "Boolean indicating whether or not to wrap lines to fit available space"}
       ]
     ],
     overlay: [
@@ -120,20 +107,15 @@ defmodule Ratatouille.Renderer.Element do
       ]
     ],
     panel: [
-      description:
-        "Container with a border and title used to demarcate content",
+      description: "Container with a border and title used to demarcate content",
       renderer: Panel,
       child_tags: @content_tags,
       attributes: [
         color: {:optional, "Color of title"},
         background: {:optional, "Background of title"},
         attributes: {:optional, "Attributes for the title"},
-        padding:
-          {:optional,
-           "Integer providing inner padding to use when rendering child elements"},
-        height:
-          {:optional,
-           "Height of the table in rows or `:fill` to fill the parent container's box"},
+        padding: {:optional, "Integer providing inner padding to use when rendering child elements"},
+        height: {:optional, "Height of the table in rows or `:fill` to fill the parent container's box"},
         title: {:optional, "Binary containing the title for the panel"},
         border: {:optional, "Attributes for the border"}
       ]
@@ -153,8 +135,7 @@ defmodule Ratatouille.Renderer.Element do
       ]
     ],
     row: [
-      description:
-        "Container used to define grid layouts with one or more columns",
+      description: "Container used to define grid layouts with one or more columns",
       renderer: Row,
       child_tags: [:column],
       attributes: []
@@ -164,8 +145,7 @@ defmodule Ratatouille.Renderer.Element do
       renderer: Sparkline,
       child_tags: [],
       attributes: [
-        series:
-          {:required, "List of float or integer values representing the series"}
+        series: {:required, "List of float or integer values representing the series"}
       ]
     ],
     table: [
@@ -178,13 +158,10 @@ defmodule Ratatouille.Renderer.Element do
       description: "Element representing a table cell",
       child_tags: [],
       attributes: [
-        content:
-          {:required, "Binary containing the text content to be displayed"},
+        content: {:required, "Binary containing the text content to be displayed"},
         color: {:optional, "Constant representing color to use for foreground"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"}
       ]
     ],
     table_row: [
@@ -192,23 +169,18 @@ defmodule Ratatouille.Renderer.Element do
       child_tags: [:table_cell],
       attributes: [
         color: {:optional, "Constant representing color to use for foreground"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"}
       ]
     ],
     text: [
       description: "Inline element for displaying uniformly-styled text",
       child_tags: [],
       attributes: [
-        content:
-          {:required, "Binary containing the text content to be displayed"},
+        content: {:required, "Binary containing the text content to be displayed"},
         color: {:optional, "Constant representing color to use for foreground"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"}
       ]
     ],
     tree: [
@@ -223,10 +195,8 @@ defmodule Ratatouille.Renderer.Element do
       attributes: [
         content: {:required, "Binary label for the node"},
         color: {:optional, "Constant representing color to use for foreground"},
-        background:
-          {:optional, "Constant representing color to use for background"},
-        attributes:
-          {:optional, "Constant representing style attributes to apply"}
+        background: {:optional, "Constant representing color to use for background"},
+        attributes: {:optional, "Constant representing style attributes to apply"}
       ]
     ],
     view: [
@@ -235,8 +205,7 @@ defmodule Ratatouille.Renderer.Element do
       child_tags: [:overlay | @content_tags],
       attributes: [
         top_bar: {:optional, "A `:bar` element to occupy the view's first row"},
-        bottom_bar:
-          {:optional, "A `:bar` element to occupy the view's last row"}
+        bottom_bar: {:optional, "A `:bar` element to occupy the view's last row"}
       ]
     ],
     viewport: [
@@ -245,11 +214,8 @@ defmodule Ratatouille.Renderer.Element do
       child_tags: @content_tags,
       attributes: [
         offset_x:
-          {:optional,
-           "Integer representing the number of columns to offset the child content by. Defaults to 0."},
-        offset_y:
-          {:optional,
-           "Integer representing the number of rows to offset the child content by. Defaults to 0."}
+          {:optional, "Integer representing the number of columns to offset the child content by. Defaults to 0."},
+        offset_y: {:optional, "Integer representing the number of rows to offset the child content by. Defaults to 0."}
       ]
     ]
   ]

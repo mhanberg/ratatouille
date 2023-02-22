@@ -20,26 +20,22 @@ defmodule Ratatouille.RendererTest do
     end
 
     test "validates root element is a `view`" do
-      assert {:error,
-              "Invalid view hierarchy: Root element must have tag 'view', but found 'panel'"} =
+      assert {:error, "Invalid view hierarchy: Root element must have tag 'view', but found 'panel'"} =
                Renderer.validate_tree(element(:panel, []))
 
-      assert {:error,
-              "Invalid view hierarchy: Root element must have tag 'view', but found 'text'"} =
+      assert {:error, "Invalid view hierarchy: Root element must have tag 'view', but found 'text'"} =
                Renderer.validate_tree(element(:text, []))
     end
 
     test "validates relationships" do
-      assert {:error,
-              "Invalid view hierarchy: 'column' cannot be a child of 'view'"} =
+      assert {:error, "Invalid view hierarchy: 'column' cannot be a child of 'view'"} =
                Renderer.validate_tree(
                  view do
                    column(size: 1)
                  end
                )
 
-      assert {:error,
-              "Invalid view hierarchy: 'panel' cannot be a child of 'row'"} =
+      assert {:error, "Invalid view hierarchy: 'panel' cannot be a child of 'row'"} =
                Renderer.validate_tree(
                  view do
                    row do
@@ -48,8 +44,7 @@ defmodule Ratatouille.RendererTest do
                  end
                )
 
-      assert {:error,
-              "Invalid view hierarchy: 'text' cannot be a child of 'column'"} =
+      assert {:error, "Invalid view hierarchy: 'text' cannot be a child of 'column'"} =
                Renderer.validate_tree(
                  view do
                    row do
@@ -62,16 +57,14 @@ defmodule Ratatouille.RendererTest do
     end
 
     test "validates attributes" do
-      assert {:error,
-              "Invalid attributes: 'panel' does not accept attributes [:invalid]"} =
+      assert {:error, "Invalid attributes: 'panel' does not accept attributes [:invalid]"} =
                Renderer.validate_tree(
                  view do
                    panel(invalid: 42)
                  end
                )
 
-      assert {:error,
-              "Invalid attributes: 'column' is missing required attributes [:size]"} =
+      assert {:error, "Invalid attributes: 'column' is missing required attributes [:size]"} =
                Renderer.validate_tree(
                  view do
                    row do

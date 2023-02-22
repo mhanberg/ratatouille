@@ -85,10 +85,7 @@ defmodule Ratatouille.Renderer do
   end
 
   def validate_tree(%Element{tag: tag}) do
-    {:error,
-     "Invalid view hierarchy: Root element must have tag 'view', but found '#{
-       tag
-     }'"}
+    {:error, "Invalid view hierarchy: Root element must have tag 'view', but found '#{tag}'"}
   end
 
   defp validate_subtree(parent, [
@@ -118,16 +115,10 @@ defmodule Ratatouille.Renderer do
         :ok
 
       {invalid_keys, []} ->
-        {:error,
-         "Invalid attributes: '#{tag}' does not accept attributes #{
-           inspect(invalid_keys)
-         }"}
+        {:error, "Invalid attributes: '#{tag}' does not accept attributes #{inspect(invalid_keys)}"}
 
       {_, missing_keys} ->
-        {:error,
-         "Invalid attributes: '#{tag}' is missing required attributes #{
-           inspect(missing_keys)
-         }"}
+        {:error, "Invalid attributes: '#{tag}' is missing required attributes #{inspect(missing_keys)}"}
     end
   end
 
@@ -137,10 +128,7 @@ defmodule Ratatouille.Renderer do
     if child_tag in valid_child_tags do
       :ok
     else
-      {:error,
-       "Invalid view hierarchy: '#{child_tag}' cannot be a child of '#{
-         parent_tag
-       }'"}
+      {:error, "Invalid view hierarchy: '#{child_tag}' cannot be a child of '#{parent_tag}'"}
     end
   end
 end

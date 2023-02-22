@@ -48,13 +48,9 @@ defmodule Ratatouille.RuntimeTest do
         restart: :transient
       )
 
-    event_manager =
-      start_supervised!({EventManager, name: nil, bindings: BindingsStub})
+    event_manager = start_supervised!({EventManager, name: nil, bindings: BindingsStub})
 
-    pid =
-      start_supervised!(
-        {Runtime, app: AppStub, window: window, event_manager: event_manager}
-      )
+    pid = start_supervised!({Runtime, app: AppStub, window: window, event_manager: event_manager})
 
     %{pid: pid}
   end

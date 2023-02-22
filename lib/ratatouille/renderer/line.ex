@@ -13,7 +13,7 @@ defmodule Ratatouille.Renderer.Line do
     do: render(canvas, :vertical, position, ch, len, attrs)
 
   def render(canvas, orientation, %Position{} = position, ch, len, attrs)
-  when orientation in [:horizontal, :vertical] do
+      when orientation in [:horizontal, :vertical] do
     template = template_cell(attrs)
     cell_generator = Cells.generator(position, orientation, template)
 

@@ -36,8 +36,7 @@ defmodule Ratatouille.Window do
   """
   @spec start_link(Keyword.t()) :: GenServer.on_start()
   def start_link(opts \\ []) do
-    {init_opts, server_opts} =
-      Keyword.split(opts, [:bindings, :input_mode, :output_mode])
+    {init_opts, server_opts} = Keyword.split(opts, [:bindings, :input_mode, :output_mode])
 
     defaulted_init_opts =
       Map.merge(
